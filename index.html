@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anand Agro Farms - Farm Data Management</title>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', 'Courier New', monospace;
+            line-height: 1.6;
+            color: #2d3748;
+            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Header */
+        .header {
+            background: white;
+            border-radius: 12px;
+            padding: 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-left: 6px solid #38a169;
+        }
+
+        .farm-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #1a202c;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .farm-subtitle {
+            font-size: 1.1rem;
+            color: #4a5568;
+            font-weight: 400;
+            margin-bottom: 15px;
+        }
+
+        .village-info {
+            font-size: 1rem;
+            color: #718096;
+            font-weight: 300;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+
+        .lang-btn {
+            background: none;
+            border: none;
+            padding: 12px 18px;
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: #4a5568;
+        }
+
+        .lang-btn.active {
+            background: #38a169;
+            color: white;
+        }
+
+        .lang-btn:hover:not(.active) {
+            background: #f7fafc;
+        }
+
+        /* Farm Data Grid */
+        .farm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .farmer-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            border-top: 4px solid #4299e1;
+        }
+
+        .farmer-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: #1a202c;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .farmer-icon {
+            width: 24px;
+            height: 24px;
+            background: #4299e1;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        /* Data Sections */
+        .data-section {
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2d3748;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+
+        .data-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            border-bottom: 1px solid #f7fafc;
+        }
+
+        .data-label {
+            font-weight: 500;
+            color: #4a5568;
+            flex: 1;
+        }
+
+        .data-value {
+            font-weight: 400;
+            color: #1a202c;
+            text-align: right;
+            flex: 1;
+        }
+
+        .highlight-value {
+            background: #f0fff4;
+            padding: 4px 8px;
+            border-radius: 4px;
+            border-left: 3px solid #38a169;
+            font-weight: 600;
+        }
+
+        /* Area Details */
+        .area-details {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+
+        .area-item {
+            font-size: 0.9rem;
+            color: #495057;
+            margin-bottom: 5px;
+            padding: 5px 0;
+        }
+
+        .area-number {
+            font-weight: 600;
+            color: #2d3748;
+        }
+
+        /* Summary Card */
+        .summary-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .summary-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .total-area {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .area-subtitle {
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Hidden content for language switching */
+        .hindi-content {
+            display: none;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .farm-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .language-switcher {
+                position: relative;
+                top: auto;
+                right: auto;
+                margin-bottom: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="language-switcher">
+        <button class="lang-btn active" onclick="switchLanguage('en')">EN</button>
+        <button class="lang-btn" onclick="switchLanguage('hi')">हि</button>
+    </div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="header">
+            <h1 class="farm-title">
+                <span class="english-content">Anand Agro Farms</span>
+                <span class="hindi-content">आनंद एग्रो फार्म्स</span>
+            </h1>
+            <p class="farm-subtitle">
+                <span class="english-content">मेरी फ़सल मेरा ब्यो रा</span>
+                <span class="hindi-content">मेरी फ़सल मेरा ब्यो रा</span>
+            </p>
+            <p class="village-info">
+                <span class="english-content">Village: Kheri Shish Gran</span>
+                <span class="hindi-content">गांव: खेरी शीश ग्रान</span>
+            </p>
+            <div style="margin-top: 20px; padding-top: 15px; border-top: 1px solid #e2e8f0;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 15px;">
+                    <div>
+                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 5px;">
+                            <span class="english-content">Data Year: 2025</span>
+                            <span class="hindi-content">डेटा वर्ष: 2025</span>
+                        </p>
+                        <p style="font-size: 1rem; font-weight: 500; color: #2d3748;">
+                            <span class="english-content">Contractor: Satpal Singh</span>
+                            <span class="hindi-content">ठेकेदार: सतपाल सिंह</span>
+                        </p>
+                    </div>
+                    <div style="text-align: right;">
+                        <p style="font-size: 0.9rem; color: #4a5568; margin-bottom: 5px;">
+                            <span class="english-content">Contract Period: 2025-2026</span>
+                            <span class="hindi-content">अनुबंध अवधि: 2025-2026</span>
+                        </p>
+                        <p style="font-size: 1.1rem; font-weight: 600; color: #38a169;">
+                            <span class="english-content">Rate: ₹66,500/-</span>
+                            <span class="hindi-content">दर: ₹66,500/-</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Farm Data Grid -->
+        <div class="farm-grid">
+            <!-- Vipul's Farm Data -->
+            <div class="farmer-card">
+                <h2 class="farmer-name">
+                    <div class="farmer-icon"></div>
+                    <span class="english-content">Vipul's Farm</span>
+                    <span class="hindi-content">विपुल का फार्म</span>
+                </h2>
+
+                <div class="data-section">
+                    <h3 class="section-title">
+                        <span class="english-content">Land Records</span>
+                        <span class="hindi-content">भूमि रिकॉर्ड</span>
+                    </h3>
+                    <div class="data-row">
+                        <span class="data-label">
+                            <span class="english-content">Khewat Number</span>
+                            <span class="hindi-content">खेवट संख्या</span>
+                        </span>
+                        <span class="data-value highlight-value">64</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">
+                            <span class="english-content">Total Area</span>
+                            <span class="hindi-content">कुल क्षेत्रफल</span>
+                        </span>
+                        <span class="data-value highlight-value">7 Acres / 56 Kanals</span>
+                    </div>
+                </div>
+
+                <div class="data-section">
+                    <h3 class="section-title">
+                        <span class="english-content">Area Details</span>
+                        <span class="hindi-content">क्षेत्र विवरण</span>
+                    </h3>
+                    <div class="area-details">
+                        <div class="area-item">
+                            <span class="area-number">30//</span> 22 8 knl
+                        </div>
+                        <div class="area-item">
+                            <span class="area-number">35//</span> 2 8 knl, 9 8 knl, 11 8 knl, 12 8 knl, 19 8 knl, 20 8 knl
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sirvagya's Farm Data -->
+            <div class="farmer-card">
+                <h2 class="farmer-name">
+                    <div class="farmer-icon"></div>
+                    <span class="english-content">Sirvagya's Farm</span>
+                    <span class="hindi-content">सर्वज्ञ का फार्म</span>
+                </h2>
+
+                <div class="data-section">
+                    <h3 class="section-title">
+                        <span class="english-content">Land Records</span>
+                        <span class="hindi-content">भूमि रिकॉर्ड</span>
+                    </h3>
+                    <div class="data-row">
+                        <span class="data-label">
+                            <span class="english-content">Khewat Number</span>
+                            <span class="hindi-content">खेवट संख्या</span>
+                        </span>
+                        <span class="data-value highlight-value">64</span>
+                    </div>
+
+                    <div class="data-row">
+                        <span class="data-label">
+                            <span class="english-content">Total Area</span>
+                            <span class="hindi-content">कुल क्षेत्रफल</span>
+                        </span>
+                        <span class="data-value highlight-value">7.5 Acres / 61-17 Kanals</span>
+                    </div>
+                </div>
+
+                <div class="data-section">
+                    <h3 class="section-title">
+                        <span class="english-content">Area Details</span>
+                        <span class="hindi-content">क्षेत्र विवरण</span>
+                    </h3>
+                    <div class="area-details">
+                        <div class="area-item">
+                            <span class="area-number">29//</span> 6/2 4 knl-12 mrl 15 16
+                        </div>
+                        <div class="area-item">
+                            <span class="area-number">30//</span> 21
+                        </div>
+                        <div class="area-item">
+                            <span class="area-number">35//</span> 1 10
+                        </div>
+                        <div class="area-item">
+                            <span class="area-number">36//</span> 6 7/2 15
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary Card -->
+        <div class="summary-card">
+            <h2 class="summary-title">
+                <span class="english-content">Combined Farm Summary</span>
+                <span class="hindi-content">संयुक्त फार्म सारांश</span>
+            </h2>
+            <div class="total-area">14.5 Acres</div>
+            <p class="area-subtitle">
+                <span class="english-content">Total Combined Area | 117-17 Kanals</span>
+                <span class="hindi-content">कुल संयुक्त क्षेत्रफल | 117-17 कनाल</span>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function switchLanguage(lang) {
+            const englishElements = document.querySelectorAll('.english-content');
+            const hindiElements = document.querySelectorAll('.hindi-content');
+            const langButtons = document.querySelectorAll('.lang-btn');
+
+            if (lang === 'en') {
+                englishElements.forEach(el => el.style.display = 'inline');
+                hindiElements.forEach(el => el.style.display = 'none');
+                langButtons[0].classList.add('active');
+                langButtons[1].classList.remove('active');
+                document.documentElement.lang = 'en';
+            } else {
+                englishElements.forEach(el => el.style.display = 'none');
+                hindiElements.forEach(el => el.style.display = 'inline');
+                langButtons[1].classList.add('active');
+                langButtons[0].classList.remove('active');
+                document.documentElement.lang = 'hi';
+            }
+        }
+
+        // Initialize with English
+        document.addEventListener('DOMContentLoaded', function() {
+            switchLanguage('en');
+        });
+    </script>
+</body>
+</html>
