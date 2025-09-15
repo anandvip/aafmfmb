@@ -6,45 +6,390 @@
   <title>Contingency Plan After Paddy Failure (PR‑114) — Pehowa, Kurukshetra</title>
   <meta name="description" content="Bilingual (English/Hindi) plan for 8 acres in Pehowa (Kurukshetra) after PR‑114 paddy failure: short‑duration crops, yields, mandi rates, and a field‑wise mix till Nov–Dec."/>
   <style>
-    :root{
-      --bg:#0b0d10; --fg:#e6edf3; --muted:#9fb0c0; --card:#11161c; --accent:#6aa6ff; --accent2:#7ee787; --danger:#ff7b72; --border:#1f2937;
+    :root{ 
+      --bg:#0b0d10; 
+      --fg:#e6edf3; 
+      --muted:#9fb0c0; 
+      --card:#11161c; 
+      --accent:#6aa6ff; 
+      --accent2:#7ee787; 
+      --danger:#ff7b72; 
+      --border:#1f2937; 
     }
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0;background:var(--bg);color:var(--fg);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    
+    /* Reset and base styles with better mobile defaults */
+    *{
+      box-sizing:border-box;
+      margin:0;
+      padding:0;
+    }
+    
+    html,body{
+      margin:0;
+      padding:0;
+      background:var(--bg);
+      color:var(--fg);
+      font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif;
+      overflow-x:hidden; /* Prevent horizontal scroll on body */
+    }
+    
     a{color:var(--accent)}
-    .wrap{max-width:1100px;margin:0 auto;padding:24px}
-    header{display:flex;gap:16px;align-items:flex-start;justify-content:space-between;flex-wrap:wrap}
-    h1{font-size:clamp(1.25rem,2.2vw+1rem,2.2rem);margin:0}
-    .toolbar{display:flex;gap:8px;flex-wrap:wrap}
-    button{background:#0f1722;border:1px solid var(--border);color:var(--fg);padding:8px 12px;border-radius:10px;cursor:pointer}
+    
+    /* Container with proper mobile padding */
+    .wrap{
+      max-width:1100px;
+      margin:0 auto;
+      padding:clamp(12px, 3vw, 24px); /* Responsive padding */
+      width:100%; /* Ensure full width usage */
+    }
+    
+    /* Header improvements */
+    header{
+      display:flex;
+      gap:clamp(8px, 2vw, 16px);
+      align-items:flex-start;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      width:100%;
+    }
+    
+    h1{
+      font-size:clamp(1.1rem,4vw,2.2rem); /* Better mobile scaling */
+      margin:0;
+      word-break:break-word; /* Prevent long words from overflowing */
+      line-height:1.2;
+    }
+    
+    /* Toolbar - stack on mobile */
+    .toolbar{
+      display:flex;
+      gap:6px;
+      flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    
+    button{
+      background:#0f1722;
+      border:1px solid var(--border);
+      color:var(--fg);
+      padding:clamp(6px, 1vw, 8px) clamp(8px, 2vw, 12px);
+      border-radius:8px;
+      cursor:pointer;
+      font-size:clamp(12px, 2vw, 14px);
+      white-space:nowrap;
+    }
     button:hover{border-color:#2b3b52}
-    .grid{display:grid;gap:16px;margin-top:20px}
-    @media (min-width:900px){.grid{grid-template-columns:2fr 1fr}}
-    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:18px;box-shadow:0 6px 24px rgba(0,0,0,.25)}
-    h2{margin:.2rem 0 0.6rem;font-size:1.35rem}
-    h3{margin:1rem 0 .4rem;font-size:1.05rem;color:var(--accent2)}
-    .pill{display:inline-block;padding:.2rem .6rem;border:1px solid var(--border);border-radius:999px;color:var(--muted);font-size:.8rem;margin:.2rem .3rem .2rem 0}
-    .kvs{display:grid;gap:8px}
-    .kvs div{display:grid;grid-template-columns:140px 1fr;gap:8px}
-    .note{color:var(--muted);font-size:.94rem}
-    table{width:100%;border-collapse:collapse;margin:.4rem 0 0}
-    th,td{border-bottom:1px solid var(--border);padding:10px 8px;text-align:left;vertical-align:top}
-    th{color:#b9c6d7;font-weight:600}
+    
+    /* Grid with better mobile behavior */
+    .grid{
+      display:grid;
+      gap:clamp(12px, 3vw, 16px);
+      margin-top:clamp(16px, 4vw, 20px);
+      width:100%;
+    }
+    
+    /* Responsive grid - single column on mobile */
+    @media (min-width:768px){
+      .grid{grid-template-columns:2fr 1fr}
+    }
+    
+    /* Cards with mobile-optimized spacing */
+    .card{
+      background:var(--card);
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:clamp(12px, 3vw, 18px);
+      box-shadow:0 4px 12px rgba(0,0,0,.25);
+      width:100%;
+      min-width:0; /* Allow shrinking */
+    }
+    
+    h2{
+      margin:.2rem 0 0.6rem;
+      font-size:clamp(1.1rem, 3vw, 1.35rem);
+      word-break:break-word;
+    }
+    
+    h3{
+      margin:1rem 0 .4rem;
+      font-size:clamp(0.95rem, 2.5vw, 1.05rem);
+      color:var(--accent2);
+      word-break:break-word;
+    }
+    
+    /* Pills with better mobile wrapping */
+    .pill{
+      display:inline-block;
+      padding:.3rem .6rem;
+      border:1px solid var(--border);
+      border-radius:999px;
+      color:var(--muted);
+      font-size:clamp(0.7rem, 2vw, 0.8rem);
+      margin:.2rem .3rem .2rem 0;
+      word-break:break-word;
+      max-width:100%;
+    }
+    
+    /* Key-value pairs - stack on mobile */
+    .kvs{
+      display:grid;
+      gap:clamp(6px, 2vw, 8px);
+      width:100%;
+    }
+    
+    .kvs div{
+      display:grid;
+      grid-template-columns:1fr;
+      gap:4px;
+      word-break:break-word;
+    }
+    
+    @media(min-width:480px){
+      .kvs div{
+        grid-template-columns:140px 1fr;
+        gap:8px;
+      }
+    }
+    
+    .note{
+      color:var(--muted);
+      font-size:clamp(0.85rem, 2.2vw, 0.94rem);
+      word-break:break-word;
+    }
+    
+    /* TABLE IMPROVEMENTS - Key mobile fix */
+    .table-scroll{
+      overflow-x:auto;
+      -webkit-overflow-scrolling:touch;
+      border:1px solid var(--border);
+      border-radius:12px;
+      margin-top:.4rem;
+      width:100%;
+      /* Add scrollbar styling for better UX */
+      scrollbar-width: thin;
+      scrollbar-color: var(--accent) var(--card);
+    }
+    
+    .table-scroll::-webkit-scrollbar {
+      height: 8px;
+    }
+    
+    .table-scroll::-webkit-scrollbar-track {
+      background: var(--card);
+      border-radius: 4px;
+    }
+    
+    .table-scroll::-webkit-scrollbar-thumb {
+      background: var(--accent);
+      border-radius: 4px;
+    }
+    
+    .table-scroll table{
+      min-width:600px; /* Reduced from 720px for better mobile experience */
+      width:100%;
+      border-collapse:collapse;
+    }
+    
+    th,td{
+      border-bottom:1px solid var(--border);
+      padding:clamp(6px, 2vw, 10px) clamp(4px, 1vw, 8px);
+      text-align:left;
+      vertical-align:top;
+      white-space:nowrap;
+      font-size:clamp(0.75rem, 2vw, 0.9rem);
+    }
+    
+    th{
+      color:#b9c6d7;
+      font-weight:600;
+      background:rgba(255,255,255,0.05);
+      position:sticky;
+      top:0;
+    }
+    
+    /* Color classes */
     .ok{color:var(--accent2)}
     .warn{color:#ffd166}
     .bad{color:var(--danger)}
-    .plan{display:grid;gap:10px}
-    .foot{margin-top:24px;color:var(--muted);font-size:.9rem}
-    .tag{background:#0e1520;border:1px dashed #2a3850;color:#9ecaff;padding:2px 8px;border-radius:999px;font-size:.75rem}
-    details{background:#0e1319;border:1px solid var(--border);border-radius:12px;padding:10px}
-    details>summary{cursor:pointer;color:#bfe3ff}
-    .hl{background:linear-gradient(90deg,rgba(122,205,255,.12),rgba(126,231,135,.12));padding:10px;border:1px solid var(--border);border-radius:12px}
-    .highlight-box{border:1px solid var(--accent2);border-radius:12px;padding:10px;margin-top:12px;background:#0e1319}
-    /* Dev test styles */
-    .tests{font-size:.9rem;color:var(--muted)}
-    .tests code{background:#0e1520;border:1px solid var(--border);padding:2px 6px;border-radius:6px}
-    .test-pass{color:#7ee787}
-    .test-fail{color:#ff7b72}
+    
+    /* Lists and content */
+    .plan{
+      display:grid;
+      gap:clamp(8px, 2vw, 10px);
+      width:100%;
+    }
+    
+    .plan li, .plan ol li {
+      word-break:break-word;
+      line-height:1.4;
+    }
+    
+    .foot{
+      margin-top:clamp(16px, 4vw, 24px);
+      color:var(--muted);
+      font-size:clamp(0.8rem, 2vw, 0.9rem);
+    }
+    
+    .tag{
+      background:#0e1520;
+      border:1px dashed #2a3850;
+      color:#9ecaff;
+      padding:2px 6px;
+      border-radius:999px;
+      font-size:clamp(0.65rem, 1.8vw, 0.75rem);
+      word-break:break-word;
+    }
+    
+    details{
+      background:#0e1319;
+      border:1px solid var(--border);
+      border-radius:12px;
+      padding:clamp(8px, 2vw, 10px);
+      margin:8px 0;
+    }
+    
+    details>summary{
+      cursor:pointer;
+      color:#bfe3ff;
+      padding:4px 0;
+    }
+    
+    .hl{
+      background:linear-gradient(90deg,rgba(122,205,255,.12),rgba(126,231,135,.12));
+      padding:clamp(8px, 2vw, 10px);
+      border:1px solid var(--border);
+      border-radius:12px;
+      word-break:break-word;
+    }
+    
+    .highlight-box{
+      border:1px solid var(--accent2);
+      border-radius:12px;
+      padding:clamp(8px, 2vw, 10px);
+      margin-top:12px;
+      background:#0e1319;
+    }
+    
+    /* Carousel improvements */
+    .carousel{
+      position:relative;
+      overflow:hidden;
+      border-radius:12px;
+      margin:clamp(12px, 3vw, 20px) 0;
+      width:100%;
+    }
+    
+    .carousel-track{
+      display:flex;
+      transition:transform .3s ease-in-out;
+      will-change:transform;
+      touch-action:pan-y;
+    }
+    
+    .carousel img{
+      flex:0 0 100%;
+      width:100%;
+      object-fit:cover;
+      aspect-ratio:16/9;
+      display:block;
+    }
+    
+    .carousel-btn{
+      position:absolute;
+      top:50%;
+      transform:translateY(-50%);
+      background:rgba(0,0,0,0.7);
+      border:none;
+      color:white;
+      padding:clamp(6px, 2vw, 8px) clamp(8px, 2vw, 12px);
+      cursor:pointer;
+      border-radius:50%;
+      font-size:clamp(14px, 3vw, 18px);
+      z-index:10;
+    }
+    
+    .carousel-btn.left{left:8px}
+    .carousel-btn.right{right:8px}
+    
+    /* Mobile-specific improvements */
+    @media (max-width:640px){
+      html,body{font-size:15px}
+      
+      .wrap{
+        padding:12px;
+        overflow-x:hidden;
+      }
+      
+      header{
+        flex-direction:column;
+        align-items:stretch;
+        gap:12px;
+      }
+      
+      .toolbar{
+        justify-content:center;
+        margin-top:8px;
+      }
+      
+      .kvs div{
+        grid-template-columns:1fr;
+        gap:2px;
+      }
+      
+      .kvs div strong{
+        font-size:0.9rem;
+        color:var(--accent2);
+      }
+      
+      /* Ensure tables don't break layout */
+      .table-scroll table{
+        min-width:500px; /* Minimum table width for mobile */
+      }
+      
+      /* Better mobile typography */
+      p, li{
+        line-height:1.5;
+        word-break:break-word;
+      }
+      
+      /* Stack elements better on mobile */
+      .card{
+        margin-bottom:12px;
+      }
+    }
+    
+    /* Very small screens */
+    @media (max-width:480px){
+      .table-scroll table{
+        min-width:450px;
+      }
+      
+      th,td{
+        padding:4px 3px;
+        font-size:0.7rem;
+      }
+      
+      .carousel-btn{
+        padding:4px 6px;
+        font-size:12px;
+      }
+    }
+    
+    /* Prevent any element from causing horizontal overflow */
+    img, video, iframe, table, pre, code {
+      max-width: 100%;
+      height: auto;
+    }
+    
+    /* Ensure no element exceeds viewport width */
+    * {
+      max-width: 100%;
+    }
+    
+    /* Exception for table content inside scroll container */
+    .table-scroll * {
+      max-width: none;
+    }
   </style>
 </head>
 <body>
@@ -66,6 +411,21 @@
       </div>
     </header>
 
+    <!-- Farm Field Photos (Swipe Carousel) -->
+    <section class="card">
+      <h2>Farm Field Photos (Swipe Carousel)</h2>
+      <div class="carousel" id="farmCarousel">
+        <div class="carousel-track">
+          <img loading="lazy" src="https://images.pexels.com/photos/2164272/pexels-photo-2164272.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600" alt="Rice terraces landscape (Pexels)">
+          <img loading="lazy" src="https://images.pexels.com/photos/1462892/pexels-photo-1462892.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600" alt="Terraced fields at sunrise (Pexels)">
+          <img loading="lazy" src="https://images.pexels.com/photos/1838552/pexels-photo-1838552.jpeg?auto=compress&cs=tinysrgb&w=1200&h=600" alt="Close-up of paddy at dusk (Pexels)">
+        </div>
+        <button class="carousel-btn left" id="prevBtn">‹</button>
+        <button class="carousel-btn right" id="nextBtn">›</button>
+      </div>
+      <p class="note">These are sample images from <a href="https://www.pexels.com" target="_blank" rel="noopener">Pexels</a>. Replace the <code>src</code> values with your own farm photos when ready.</p>
+    </section>
+
     <!-- English Block -->
     <div class="lang-block" data-lang="en">
       <div class="grid">
@@ -83,52 +443,24 @@
           </ul>
 
           <h3>Per‑Acre Yield & Economics (Sept–Dec)</h3>
-          <table aria-label="Yield and economics table">
-            <thead>
-              <tr>
-                <th>Crop</th>
-                <th>Duration</th>
-                <th>Yield / acre</th>
-                <th>Mandi rate (approx.)</th>
-                <th>Gross / acre</th>
-                <th>Input cost / acre</th>
-                <th>Net / acre</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>Toria</strong> (early mustard)</td>
-                <td>75–90 d</td>
-                <td>5–6 qtl</td>
-                <td>₹5,200–5,600/qtl</td>
-                <td>₹27,000–32,000</td>
-                <td>₹7,000–9,000</td>
-                <td class="ok">₹18,000–20,000</td>
-              </tr>
-              <tr>
-                <td><strong>Early Potato</strong> (short‑duration)</td>
-                <td>70–80 d</td>
-                <td>70–80 qtl</td>
-                <td>₹1,200–1,500/qtl</td>
-                <td>₹90,000–1,20,000</td>
-                <td>₹40,000–50,000</td>
-                <td class="ok">₹40,000–60,000</td>
-              </tr>
-              <tr>
-                <td><strong>Early Peas</strong> (green pod)</td>
-                <td>65–75 d</td>
-                <td>25–30 qtl</td>
-                <td>₹2,000–3,000/qtl</td>
-                <td>₹60,000–75,000</td>
-                <td>₹20,000–25,000</td>
-                <td class="ok">₹35,000–50,000</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table aria-label="Yield and economics table">
+              <thead>
+                <tr>
+                  <th>Crop</th><th>Duration</th><th>Yield / acre</th><th>Mandi rate (approx.)</th><th>Gross / acre</th><th>Input cost / acre</th><th>Net / acre</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>Toria</strong> (early mustard)</td><td>75–90 d</td><td>5–6 qtl</td><td>₹5,200–5,600/qtl</td><td>₹27,000–32,000</td><td>₹7,000–9,000</td><td class="ok">₹18,000–20,000</td></tr>
+                <tr><td><strong>Early Potato</strong> (short‑duration)</td><td>70–80 d</td><td>70–80 qtl</td><td>₹1,200–1,500/qtl</td><td>₹90,000–1,20,000</td><td>₹40,000–50,000</td><td class="ok">₹40,000–60,000</td></tr>
+                <tr><td><strong>Early Peas</strong> (green pods)</td><td>65–75 d</td><td>25–30 qtl</td><td>₹2,000–3,000/qtl</td><td>₹60,000–75,000</td><td>₹20,000–25,000</td><td class="ok">₹35,000–50,000</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">Rates and yields are indicative for Kurukshetra belt (Sept 2025 window) and assume timely sowing, irrigation, and basic pest‑disease management.</p>
 
           <h3>Market Snapshot (Toria)</h3>
-          <ul class="cols">
+          <ul class="plan">
             <li>Haryana averages observed: <strong>₹5,200–₹5,600/qtl</strong></li>
             <li>Punjab some quotes near: <strong>₹4,000/qtl</strong> (low cases)</li>
           </ul>
@@ -184,9 +516,9 @@
             </ul>
           </div>
           <h3>Local Context</h3>
-          <p class="muted">Pehowa (Kurukshetra) canals & tubewells support quick catch‑crops. NCR proximity aids fresh‑veg sales.</p>
+          <p class="note">Pehowa (Kurukshetra) canals & tubewells support quick catch‑crops. NCR proximity aids fresh‑veg sales.</p>
           <h3>Notes</h3>
-          <p class="muted">Leafy greens can be staggered sowing for weekly harvests. Peas require support against aphids; plan spray window.</p>
+          <p class="note">Leafy greens can be staggered sowing for weekly harvests. Peas require support against aphids; plan spray window.</p>
         </aside>
       </div>
 
@@ -194,7 +526,7 @@
         <h3>Source: Conversation & Local Experience</h3>
         <p>This page compiles our chat guidance tailored to: <em>Pehowa Tehsil, Kurukshetra, Village Kheri‑Shishgran, 8 acres, PR‑114 paddy failure due to dwarf illness</em>. Figures are indicative and for rapid planning only.</p>
         <p>Tip: Before locking acreage, phone the nearest mandi commission agent for current <em>toria / peas / potato</em> bids and arrivals.</p>
-        <p class="muted">© 2025 Anand Agro Farms • Draft v1.1 • For internal planning</p>
+        <p class="note">© 2025 Anand Agro Farms • Draft v1.1 • For internal planning</p>
       </section>
     </div>
 
@@ -215,56 +547,28 @@
           </ul>
 
           <h3>प्रति एकड़ उपज व अर्थशास्त्र (सित–दिस)</h3>
-          <table aria-label="Yield and economics table in Hindi">
-            <thead>
-              <tr>
-                <th>फसल</th>
-                <th>अवधि</th>
-                <th>उपज / एकड़</th>
-                <th>मंडी दर (लगभग)</th>
-                <th>सकल / एकड़</th>
-                <th>लागत / एकड़</th>
-                <th>शुद्ध / एकड़</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td><strong>टोरिया</strong> (सरसों जल्दी)</td>
-                <td>75–90 दिन</td>
-                <td>5–6 क्विंटल</td>
-                <td>₹5,200–5,600/क्विंटल</td>
-                <td>₹27,000–32,000</td>
-                <td>₹7,000–9,000</td>
-                <td class="ok">₹18,000–20,000</td>
-              </tr>
-              <tr>
-                <td><strong>आरंभिक आलू</strong> (शॉर्ट‑ड्यूरेशन)</td>
-                <td>70–80 दिन</td>
-                <td>70–80 क्विंटल</td>
-                <td>₹1,200–1,500/क्विंटल</td>
-                <td>₹90,000–1,20,000</td>
-                <td>₹40,000–50,000</td>
-                <td class="ok">₹40,000–60,000</td>
-              </tr>
-              <tr>
-                <td><strong>आरंभिक मटर</strong> (हरी फली)</td>
-                <td>65–75 दिन</td>
-                <td>25–30 क्विंटल</td>
-                <td>₹2,000–3,000/क्विंटल</td>
-                <td>₹60,000–75,000</td>
-                <td>₹20,000–25,000</td>
-                <td class="ok">₹35,000–50,000</td>
-              </tr>
-            </tbody>
-          </table>
+          <div class="table-scroll">
+            <table aria-label="Yield and economics table in Hindi">
+              <thead>
+                <tr>
+                  <th>फसल</th><th>अवधि</th><th>उपज / एकड़</th><th>मंडी दर (लगभग)</th><th>सकल / एकड़</th><th>लागत / एकड़</th><th>शुद्ध / एकड़</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td><strong>टोरिया</strong> (सरसों जल्दी)</td><td>75–90 दिन</td><td>5–6 क्विंटल</td><td>₹5,200–5,600/क्विंटल</td><td>₹27,000–32,000</td><td>₹7,000–9,000</td><td class="ok">₹18,000–20,000</td></tr>
+                <tr><td><strong>आरंभिक आलू</strong> (शॉर्ट‑ड्यूरेशन)</td><td>70–80 दिन</td><td>70–80 क्विंटल</td><td>₹1,200–1,500/क्विंटल</td><td>₹90,000–1,20,000</td><td>₹40,000–50,000</td><td class="ok">₹40,000–60,000</td></tr>
+                <tr><td><strong>आरंभिक मटर</strong> (हरी फली)</td><td>65–75 दिन</td><td>25–30 क्विंटल</td><td>₹2,000–3,000/क्विंटल</td><td>₹60,000–75,000</td><td>₹20,000–25,000</td><td class="ok">₹35,000–50,000</td></tr>
+              </tbody>
+            </table>
+          </div>
           <p class="note">दरें और उपज कुरुक्षेत्र क्षेत्र हेतु संकेतात्मक (सितंबर 2025) हैं — समय पर बुवाई, सिंचाई और रोग‑कीट प्रबंधन मानकर।</p>
 
           <h3>मंडी झलक (टोरिया)</h3>
-          <ul class="cols">
+          <ul class="plan">
             <li>हरियाणा औसत: <strong>₹5,200–₹5,600/क्विंटल</strong></li>
             <li>पंजाब में कुछ भाव: <strong>₹4,000/क्विंटल</strong> (कम मामलों में)</li>
           </ul>
-          <p class="note">बड़ी रकबे से पहले नज़दीकी मंडी में भाव की पुष्टि कर लें — आवक और क्वालिटी से भाव बदलते हैं।</p>
+          <p class="note">बड़े रकबे से पहले नज़दीकी मंडी में भाव की पुष्टि कर लें — आवक और क्वालिटी से भाव बदलते हैं।</p>
 
           <h2>अनुशंसित 8‑एकड़ मिश्रण (व्यावहारिक)</h2>
           <ul class="plan">
@@ -316,9 +620,9 @@
             </ul>
           </div>
           <h3>स्थानीय संदर्भ</h3>
-          <p class="muted">पिहोवा (कुरुक्षेत्र) में नहर/ट्यूबवेल से कैच‑क्रॉप सम्भव; एनसीआर नज़दीक होने से ताज़ी सब्ज़ियों की खपत अच्छी।</p>
+          <p class="note">पिहोवा (कुरुक्षेत्र) में नहर/ट्यूबवेल से कैच‑क्रॉप सम्भव; एनसीआर नज़दीक होने से ताज़ी सब्ज़ियों की खपत अच्छी।</p>
           <h3>टिप्पणियाँ</h3>
-          <p class="muted">पत्तेदार सब्जियों की बुवाई चरणों में करें ताकि हर हफ्ते तुड़ाई हो। मटर में एफिड के लिए स्प्रे विंडो पहले से प्लान करें।</p>
+          <p class="note">पत्तेदार सब्जियों की बुवाई चरणों में करें ताकि हर हफ्ते तुड़ाई हो। मटर में एफिड के लिए स्प्रे विंडो पहले से प्लान करें।</p>
         </aside>
       </div>
 
@@ -326,23 +630,21 @@
         <h3>स्रोत: बातचीत एवं स्थानीय अनुभव</h3>
         <p>यह पृष्ठ हमारे संवाद का संक्षेप है — <em>पिहोवा तहसील, कुरुक्षेत्र, गाँव खेड़ी‑शिशग्रान, 8 एकड़, PR‑114 धान बौनेपन रोग से नष्ट</em> — शीघ्र योजना हेतु संकेतात्मक आँकड़े।</p>
         <p>सलाह: बड़े रकबे से पहले नज़दीकी मंडी के आढ़ती/कमीशन एजेंट से <em>टोरिया / मटर / आलू</em> के ताज़ा भाव व आवक की पुष्टि करें।</p>
-        <p class="muted">© 2025 आनंद एग्रो फ़ार्म्स • प्रारूप v1.1 • आंतरिक योजना हेतु</p>
+        <p class="note">© 2025 • आनंद एग्रो फ़ार्म्स हेतु तैयार • विपुल आनंद द्वारा • प्रारूप v1.1 • 15 सितंबर, 2025</p>
+        <p class="note">केवल आंतरिक योजना और सलाह के उद्देश्य से</p>
       </section>
     </div>
   </div>
 
   <script>
     // Utilities
-    function normalizeLineBreaks(s){
-      // Convert CRLF to LF, then collapse 2+ line breaks to one
-      return s.replace(/\r\n/g, '\n').replace(/\n{2,}/g, '\n');
-    }
+    function normalizeLineBreaks(s){ return s.replace(/\r\n/g,'\n').replace(/\n{2,}/g,'\n'); }
 
     // Print / Copy helpers
-    document.getElementById('printBtn').addEventListener('click', () => window.print());
-    document.getElementById('copyBtn').addEventListener('click', async () => {
+    document.getElementById('printBtn').addEventListener('click',()=>window.print());
+    document.getElementById('copyBtn').addEventListener('click',async()=>{
       const text = normalizeLineBreaks(document.body.innerText);
-      try { await navigator.clipboard.writeText(text); alert('Copied page text to clipboard.'); }
+      try{ await navigator.clipboard.writeText(text); alert('Copied page text to clipboard.'); }
       catch(e){ alert('Copy failed. You can select and copy manually.'); }
     });
 
@@ -350,51 +652,33 @@
     const enBtn = document.getElementById('enBtn');
     const hiBtn = document.getElementById('hiBtn');
     function setLang(lang){
-      document.querySelectorAll('.lang-block').forEach(b=>{
-        b.style.display = (b.dataset.lang===lang)?'block':'none';
-      });
+      document.querySelectorAll('.lang-block').forEach(b=>{ b.style.display=(b.dataset.lang===lang)?'block':'none'; });
       localStorage.setItem('contingency.lang', lang);
     }
     enBtn.addEventListener('click',()=>setLang('en'));
     hiBtn.addEventListener('click',()=>setLang('hi'));
-    // init from saved pref or default EN
     setLang(localStorage.getItem('contingency.lang')||'en');
 
-    // ===== Developer Tests =====
-    (function runTests(){
-      const cases = [
-        {name:'Single line', input:'Hello', expect:'Hello'},
-        {name:'Double newline collapse', input:'A\n\nB', expect:'A\nB'},
-        {name:'Multiple newline collapse', input:'A\n\n\nB', expect:'A\nB'},
-        {name:'CRLF to LF', input:'A\r\n\r\nB', expect:'A\nB'},
-        {name:'Mixed CRLF+LF', input:'A\r\n\nB', expect:'A\nB'}
-      ];
-      const results = cases.map(tc=>{
-        const out = normalizeLineBreaks(tc.input);
-        return {name:tc.name, pass: out === tc.expect, got: out, expect: tc.expect};
+    // Carousel logic
+    (function(){
+      const carousel = document.getElementById('farmCarousel');
+      if(!carousel) return;
+      const track = carousel.querySelector('.carousel-track');
+      const slides = Array.from(track.children);
+      let index = 0;
+      function update(){ track.style.transform = `translateX(-${index*100}%)`; }
+      const prev = document.getElementById('prevBtn');
+      const next = document.getElementById('nextBtn');
+      prev && prev.addEventListener('click',()=>{ index = (index===0)?slides.length-1:index-1; update(); });
+      next && next.addEventListener('click',()=>{ index = (index===slides.length-1)?0:index+1; update(); });
+      let startX=0; 
+      track.addEventListener('touchstart',e=>{startX=e.touches[0].clientX});
+      track.addEventListener('touchend',e=>{ 
+        const endX=e.changedTouches[0].clientX; 
+        if(startX-endX>50){ index=(index===slides.length-1)?0:index+1; } 
+        if(endX-startX>50){ index=(index===0)?slides.length-1:index-1; } 
+        update(); 
       });
-
-      // render in a collapsible <details> at the end of the EN block
-      const host = document.createElement('section');
-      host.className = 'card tests';
-      host.innerHTML = `
-        <details open>
-          <summary>Developer Tests (regex & copy helper)</summary>
-          <div id="testList"></div>
-        </details>`;
-
-      const enFoot = document.querySelector('[data-lang="en"] .foot') || document.querySelector('[data-lang="en"]');
-      enFoot && enFoot.parentNode.insertBefore(host, enFoot.nextSibling);
-
-      const list = host.querySelector('#testList');
-      results.forEach(r=>{
-        const row = document.createElement('div');
-        row.innerHTML = `<strong>${r.name}:</strong> <span class="${r.pass?'test-pass':'test-fail'}">${r.pass?'PASS':'FAIL'}</span>
-          <div>got: <code>${r.got.replace(/</g,'&lt;')}</code></div>
-          <div>exp: <code>${r.expect.replace(/</g,'&lt;')}</code></div>`;
-        list.appendChild(row);
-      });
-      console.log('Test results:', results);
     })();
   </script>
 </body>
